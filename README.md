@@ -238,6 +238,6 @@
 </head>
 <body>
     <h1>Πήγαινε στο Quiz</h1>
-    <button onclick="location.href='quiz.html'">Go to Quiz</button>
+    <button onclick="location.href='Quiz.html'">Go to Quiz</button>
 </body>
 </html>
