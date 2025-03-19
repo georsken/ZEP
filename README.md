@@ -103,7 +103,7 @@
 <body>
     <h1>Επιλέξτε Δυσκολία</h1>
     <div class="container">
-        <button class="button" onclick="showQuestion('easy')">Απλό</button>
+        <button class="button" onclick="showQuestion('easy')">Εύκολο</button>
         <button class="button" onclick="showQuestion('hard')">Δύσκολο</button>
         <div id="question" class="question-box"></div>
     </div>
