@@ -237,7 +237,7 @@
     <title>Index Page</title>
 </head>
 <body>
-    <h1>Πήγαινε στο index</h1>
-    <button onclick="location.href='index.html'">Go to Quiz1</button>
+    <h1>Πήγαινε στο quiz</h1>
+    <button onclick="location.href='quiz.html'">Go to quiz</button>
 </body>
 </html>
