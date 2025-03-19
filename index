@@ -12,44 +12,92 @@
             background-size: cover;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
+
+        h1 {
+            font-size: 2rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
         .container {
-            margin-top: 50px;
             background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
+            padding: 2rem;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 400px;
         }
+
         .button {
-            padding: 12px 25px;
-            margin: 10px;
+            padding: 1rem;
+            margin: 0.5rem;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 1.2rem;
             border: none;
             border-radius: 5px;
             color: white;
             transition: 0.3s;
+            width: 100%;
         }
+
         .button:nth-child(1) {
             background-color: #4CAF50;
         }
+
         .button:nth-child(2) {
             background-color: #FF5733;
         }
+
         .button:hover {
             opacity: 0.8;
         }
+
         .question-box {
-            margin-top: 20px;
-            font-size: 20px;
+            margin-top: 1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #333;
-            padding: 15px;
+            padding: 1rem;
             background: #e3e3e3;
             display: inline-block;
             border-radius: 5px;
-            min-width: 300px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                padding: 2rem 0;
+            }
+
+            .container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .button {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+
+            .question-box {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -142,7 +190,7 @@
                 "το ρήμα ρωτάω στον Ενεστώτα",
                 "το ρήμα ανοίγω στον Υπερσυντέλικο",
                 "το ρήμα κλείνω στον Παρακείμενο",
-                "το ρήμα κάθομαι στον Παρατατικό",
+                "το ρήμα κάθoμαι στον Παρατατικό",
                 "το ρήμα φωνάζω στον Μέλλοντα Εξακολουθητικό",
                 "το ρήμα γιορτάζω στον Αόριστο",
                 "το ρήμα σπουδάζω στον Συντελεσμένο Μέλλοντα",
@@ -177,7 +225,7 @@
 
         function showQuestion(difficulty) {
             const randomIndex = Math.floor(Math.random() * questions[difficulty].length);
-            document.getElementById('question').textContent = questions[difficulty][randomIndex];
+            document.getElementById("question").innerText = questions[difficulty][randomIndex];
         }
     </script>
 </body>
