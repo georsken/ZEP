@@ -231,122 +231,13 @@
 </body>
 </html>
 
-
-
-
-
-<!DOCTYPE html>
-<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drag and Drop List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 200px;
-            margin: 50px auto;
-        }
-        .list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            border: 2px solid #333;
-            border-radius: 5px;
-        }
-        .list-item {
-            padding: 10px;
-            margin: 2px;
-            background-color: #f0f0f0;
-            cursor: grab;
-            text-align: center;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .dragging {
-            opacity: 0.5;
-        }
-        .editable {
-            cursor: text;
-        }
-    </style>
+    <title>Index Page</title>
 </head>
 <body>
-    <div class="container">
-        <ul class="list" id="sortable-list">
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#1 Ταξιαρχούλα</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#2 Ταξιάρχης</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#3 Σωτήρης</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#4 Γιάννης</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#5 Ειρήνη</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#6 Παρασκευή</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#7 Χριστίνα</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#8 Γιαννούλα</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#9 Γιάννης Φ.</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#10 Ιωάννης</li>
-        </ul>
-    </div>
-    
-    <script>
-        const list = document.getElementById("sortable-list");
-        let draggedItem = null;
-
-        list.addEventListener("dragstart", (e) => {
-            draggedItem = e.target;
-            e.target.classList.add("dragging");
-        });
-
-        list.addEventListener("dragend", (e) => {
-            e.target.classList.remove("dragging");
-        });
-
-        list.addEventListener("dragover", (e) => {
-            e.preventDefault();
-            const afterElement = getDragAfterElement(list, e.clientY);
-            if (afterElement == null) {
-                list.appendChild(draggedItem);
-            } else {
-                list.insertBefore(draggedItem, afterElement);
-            }
-            updateNumbers();
-        });
-
-        function getDragAfterElement(container, y) {
-            const draggableElements = [...container.querySelectorAll(".list-item:not(.dragging)")];
-            return draggableElements.reduce((closest, child) => {
-                const box = child.getBoundingClientRect();
-                const offset = y - box.top - box.height / 2;
-                return offset < 0 && offset > closest.offset ? { offset: offset, element: child } : closest;
-            }, { offset: Number.NEGATIVE_INFINITY }).element;
-        }
-
-        function updateNumbers() {
-            const items = document.querySelectorAll(".list-item");
-            items.forEach((item, index) => {
-                item.textContent = `#${index + 1} ${item.textContent.replace(/^#\d+ /, '')}`;
-            });
-        }
-
-        function editItem(item) {
-            let currentText = item.textContent.replace(/^#\d+ /, '');
-            let input = document.createElement("input");
-            input.type = "text";
-            input.value = currentText;
-            input.className = "editable";
-            input.onblur = () => {
-                item.textContent = `#${Array.from(list.children).indexOf(item) + 1} ${input.value}`;
-            };
-            input.onkeypress = (e) => {
-                if (e.key === "Enter") {
-                    input.blur();
-                }
-            };
-            item.textContent = "";
-            item.appendChild(input);
-            input.focus();
-        }
-    </script>
+    <h1>Πήγαινε στο Quiz</h1>
+    <button onclick="location.href='quiz.html'">Go to Quiz</button>
 </body>
 </html>
