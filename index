@@ -276,16 +276,16 @@
 <body>
     <div class="container">
         <ul class="list" id="sortable-list">
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#1 Ταξιάρχης</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#2 Σωτήρης</li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#3 </li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#4 </li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#5 </li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#6 </li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#7 </li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#8 </li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#9 </li>
-            <li class="list-item" draggable="true" ondblclick="editItem(this)">#10 </li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#1 Ταξιαρχούλα</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#2 Ταξιάρχης</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#3 Σωτήρης</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#4 Γιάννης</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#5 Ειρήνη</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#6 Παρασκευή</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#7 Χριστίνα</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#8 Γιαννούλα</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#9 Γιάννης Φ.</li>
+            <li class="list-item" draggable="true" ondblclick="editItem(this)">#10 Ιωάννης</li>
         </ul>
     </div>
     
