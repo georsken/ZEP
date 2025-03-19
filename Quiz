@@ -1,12 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>Greek Verb Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .question { display: none; margin-bottom: 20px; }
+        .active { display: block; }
+        .hidden { display: none; }
+        .btn { 
+            display: block; 
+            width: 80%; 
+            padding: 15px; 
+            margin: 10px auto; 
+            background-color: #4CAF50; 
+            color: white; 
+            text-align: center; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 18px; 
+        }
+        .btn:hover { 
+            background-color: #45a049; 
+        }
+        .btn:active { 
+            background-color: #3e8e41; 
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the New Page!</h1>
-    <p>This is a new page created for navigation from the index page.</p>
+    <h1>Greek Verb Quiz</h1>
+    <form id="quizForm">
+        <div class="question" id="q1">
+            <p>1) Σε τι χρόνο είναι το ρήμα διάβαζα;</p>
+            <button type="button" class="btn" onclick="selectAnswer('q1', false)">Ενεστώτας</button>
+            <button type="button" class="btn" onclick="selectAnswer('q1', false)">Αόριστος</button>
+            <button type="button" class="btn" onclick="selectAnswer('q1', true)">Παρατατικός</button>
+            <button type="button" class="btn" onclick="selectAnswer('q1', false)">Παρακείμενος</button>
+        </div>
+        <div class="question" id="q2">
+            <p>2) Σε τι χρόνο είναι το ρήμα έστριψα;</p>
+            <button type="button" class="btn" onclick="selectAnswer('q2', false)">Παρακείμενος</button>
+            <button type="button" class="btn" onclick="selectAnswer('q2', true)">Αόριστος</button>
+            <button type="button" class="btn" onclick="selectAnswer('q2', false)">Παρατατικός</button>
+            <button type="button" class="btn" onclick="selectAnswer('q2', false)">Εξ Μέλλοντας</button>
+        </div>
+        <div class="question" id="q3">
+            <p>3) Σε τι χρόνο είναι το ρήμα έφυγα;</p>
+            <button type="button" class="btn" onclick="selectAnswer('q3', false)">Παρακείμενος</button>
+            <button type="button" class="btn" onclick="selectAnswer('q3', true)">Αόριστος</button>
+            <button type="button" class="btn" onclick="selectAnswer('q3', false)">Παρατατικός</button>
+            <button type="button" class="btn" onclick="selectAnswer('q3', false)">Εξ Μέλλοντας</button>
+        </div>
+        <div class="question" id="q4">
+            <p>4) Σε τι χρόνο είναι το ρήμα θα φάω;</p>
+            <button type="button" class="btn" onclick="selectAnswer('q4', false)">Παρακείμενος</button>
+            <button type="button" class="btn" onclick="selectAnswer('q4', false)">Αόριστος</button>
+            <button type="button" class="btn" onclick="selectAnswer('q4', false)">Παρατατικός</button>
+            <button type="button" class="btn" onclick="selectAnswer('q4', true)">Στ. Μέλλοντας</button>
+        </div>
+    </form>
+    
+    <h2 id="result" class="hidden"></h2>
+    
+    <script>
+        const questions = document.querySelectorAll('.question');
+        let answers = {};
+        let currentQuestionIndex = 0;
+
+        // Shuffle the order of the questions
+        function shuffleQuestions() {
+            let shuffledQuestions = Array.from(questions);
+            shuffledQuestions.sort(() => Math.random() - 0.5);
+            
+            shuffledQuestions.forEach((question, index) => {
+                question.setAttribute('id', 'q' + (index + 1));
+                document.getElementById('quizForm').appendChild(question);
+            });
+        }
+
+        // Show the next question
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                // Hide the current question
+                questions[currentQuestionIndex].classList.remove("active");
+                currentQuestionIndex++;
+
+                // Show the next question
+                questions[currentQuestionIndex].classList.add("active");
+            } else {
+                // If it's the last question, calculate score
+                calculateScore();
+            }
+        }
+
+        // Select answer for a question
+        function selectAnswer(questionId, isCorrect) {
+            answers[questionId] = isCorrect;
+            nextQuestion();
+        }
+
+        // Calculate score and show result
+        function calculateScore() {
+            let score = 0;
+            Object.values(answers).forEach(answer => {
+                if (answer === true) {
+                    score++;
+                }
+            });
+            document.getElementById("result").textContent = `Your score: ${score}/${questions.length}`;
+            document.getElementById("result").classList.remove("hidden");
+        }
+
+        // Initialize the quiz
+        shuffleQuestions();
+        questions[currentQuestionIndex].classList.add("active");  // Start from the first question
+    </script>
 </body>
 </html>
