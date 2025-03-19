@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="el">
 <head>
     <meta charset="UTF-8">
@@ -238,6 +237,6 @@
 </head>
 <body>
     <h1>Πήγαινε στο quiz</h1>
-    <button onclick="location.href='quiz.html'">Go to quiz</button>
+    <button onclick="location.href='quiz.html'">Δοκίμασε το Quiz</button>
 </body>
-</html>
+
