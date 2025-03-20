@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="el">
+[<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Επιλογή Δυσκολίας</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-        
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
             text-align: center;
             background: url('https://i.ibb.co/Y7J7F57D/Screenshot.png') no-repeat center center fixed;
             background-size: cover;
@@ -19,79 +16,61 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            color: white;
         }
 
         h1 {
-            font-size: 2.5rem;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-            animation: fadeIn 1s ease-in-out;
+            font-size: 2rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.9);
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 90%;
             max-width: 400px;
-            animation: slideIn 1s ease-in-out;
         }
 
         .button {
             padding: 1rem;
-            margin: 0.7rem;
+            margin: 0.5rem;
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: 0.3s;
             width: 100%;
-            font-weight: 600;
         }
 
         .button:nth-child(1) {
-            background: linear-gradient(45deg, #4CAF50, #2E7D32);
+            background-color: #4CAF50;
         }
 
         .button:nth-child(2) {
-            background: linear-gradient(45deg, #FF5733, #C70039);
+            background-color: #FF5733;
         }
 
         .button:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
         .question-box {
             margin-top: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #fff;
+            color: #333;
             padding: 1rem;
-            background: rgba(0, 0, 0, 0.6);
+            background: #e3e3e3;
             display: inline-block;
-            border-radius: 8px;
+            border-radius: 5px;
             width: 100%;
             text-align: center;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         /* Responsive Design */
@@ -107,16 +86,16 @@
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .button {
-                font-size: 1.1rem;
-                padding: 0.9rem;
+                font-size: 1rem;
+                padding: 0.8rem;
             }
 
             .question-box {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -132,7 +111,7 @@
     <script>
         const questions = {
             easy: [
-                  "το τώρα δηλώνει τόπο ή χρόνο;",
+                "το τώρα δηλώνει τόπο ή χρόνο;",
                 "το χτές δηλώνει τόπο ή χρόνο;",
                 "το έξω δηλώνει τόπο ή χρόνο;",
                 "το μέσα δηλώνει τόπο ή χρόνο;",
@@ -187,7 +166,7 @@
                 "το οριστικά δηλώνει τόπο ή χρόνο;"
             ],
             hard: [
-                  "γ' ενικό ο μαθητής",
+                "γ' ενικό ο μαθητής",
                 "β' πληθυντικό η κοπέλα",
                 "το ρήμα γράφω στον Αόριστο",
                 "το ρήμα τρέχω στον Ενεστώτα",
@@ -243,11 +222,20 @@
             ]
         };
 
-        function showQuestion(level) {
-            const questionBox = document.getElementById("question");
-            const randomIndex = Math.floor(Math.random() * questions[level].length);
-            questionBox.innerHTML = questions[level][randomIndex];
+        function showQuestion(difficulty) {
+            const randomIndex = Math.floor(Math.random() * questions[difficulty].length);
+            document.getElementById("question").innerText = questions[difficulty][randomIndex];
         }
     </script>
 </body>
 </html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Πήγαινε στο quiz</h1>
+    <button onclick="location.href='quiz.html'">Δοκίμασε το Quiz</button>
+</body>
