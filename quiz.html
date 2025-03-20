@@ -3,59 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Απάντησε σωστά στις ερωτήσεις</title>
+    <title>🔠 Απάντησε Σωστά! | Quiz Time</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-        .question { display: none; margin-bottom: 20px; }
-        .active { display: block; }
-        .hidden { display: none; }
+        body { 
+            font-family: 'Arial', sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4); 
+            color: #fff;
+            transition: background 0.5s ease-in-out;
+        }
+        h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 20px; 
+            animation: fadeIn 1s ease-in;
+        }
+        .question { 
+            display: none; 
+            margin: 20px auto; 
+            padding: 20px; 
+            background: rgba(255, 255, 255, 0.2); 
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.5s ease-in-out;
+        }
+        .active { 
+            display: block; 
+            transform: scale(1.05);
+        }
+        .hidden { 
+            display: none; 
+        }
         .btn { 
             display: block; 
             width: 80%; 
             padding: 15px; 
             margin: 10px auto; 
-            background-color: #4CAF50; 
+            background: linear-gradient(45deg, #ff6f61, #ff4757); 
             color: white; 
-            text-align: center; 
             border: none; 
-            border-radius: 5px; 
+            border-radius: 8px; 
             cursor: pointer; 
             font-size: 18px; 
+            transition: transform 0.3s, background 0.3s;
         }
         .btn:hover { 
-            background-color: #45a049; 
+            background: linear-gradient(45deg, #ff4757, #ff6f61); 
+            transform: scale(1.1);
         }
         .btn:active { 
-            background-color: #3e8e41; 
+            background: #ff1e56;
+        }
+        #progressBarContainer {
+            width: 80%;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.3);
+            height: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #progressBar {
+            height: 100%;
+            width: 0%;
+            background: #4CAF50;
+            transition: width 0.5s ease-in-out;
+        }
+        #result {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <h1>Τα ρήματα</h1>
+    <h1>🎭 Τα Ρήματα Quiz</h1>
+    
+    <div id="progressBarContainer">
+        <div id="progressBar"></div>
+    </div>
+
     <form id="quizForm">
         <div class="question" id="q1">
-            <p>1) Σε τι χρόνο είναι το ρήμα διάβαζα;</p>
+            <p>1) Σε τι χρόνο είναι το ρήμα <strong>διάβαζα</strong>;</p>
             <button type="button" class="btn" onclick="selectAnswer('q1', false)">Ενεστώτας</button>
             <button type="button" class="btn" onclick="selectAnswer('q1', false)">Αόριστος</button>
             <button type="button" class="btn" onclick="selectAnswer('q1', true)">Παρατατικός</button>
             <button type="button" class="btn" onclick="selectAnswer('q1', false)">Παρακείμενος</button>
         </div>
+        
         <div class="question" id="q2">
-            <p>2) Σε τι χρόνο είναι το ρήμα έστριψα;</p>
+            <p>2) Σε τι χρόνο είναι το ρήμα <strong>έστριψα</strong>;</p>
             <button type="button" class="btn" onclick="selectAnswer('q2', false)">Παρακείμενος</button>
             <button type="button" class="btn" onclick="selectAnswer('q2', true)">Αόριστος</button>
             <button type="button" class="btn" onclick="selectAnswer('q2', false)">Παρατατικός</button>
             <button type="button" class="btn" onclick="selectAnswer('q2', false)">Εξ Μέλλοντας</button>
         </div>
+
         <div class="question" id="q3">
-            <p>3) Σε τι χρόνο είναι το ρήμα έφυγα;</p>
+            <p>3) Σε τι χρόνο είναι το ρήμα <strong>έφυγα</strong>;</p>
             <button type="button" class="btn" onclick="selectAnswer('q3', false)">Παρακείμενος</button>
             <button type="button" class="btn" onclick="selectAnswer('q3', true)">Αόριστος</button>
             <button type="button" class="btn" onclick="selectAnswer('q3', false)">Παρατατικός</button>
             <button type="button" class="btn" onclick="selectAnswer('q3', false)">Εξ Μέλλοντας</button>
         </div>
+
         <div class="question" id="q4">
-            <p>4) Σε τι χρόνο είναι το ρήμα θα φάω;</p>
+            <p>4) Σε τι χρόνο είναι το ρήμα <strong>θα φάω</strong>;</p>
             <button type="button" class="btn" onclick="selectAnswer('q4', false)">Παρακείμενος</button>
             <button type="button" class="btn" onclick="selectAnswer('q4', false)">Αόριστος</button>
             <button type="button" class="btn" onclick="selectAnswer('q4', false)">Παρατατικός</button>
@@ -64,59 +128,47 @@
     </form>
     
     <h2 id="result" class="hidden"></h2>
-    
+
     <script>
         const questions = document.querySelectorAll('.question');
         let answers = {};
         let currentQuestionIndex = 0;
+        const progressBar = document.getElementById("progressBar");
 
-        // Shuffle the order of the questions
-        function shuffleQuestions() {
-            let shuffledQuestions = Array.from(questions);
-            shuffledQuestions.sort(() => Math.random() - 0.5);
-            
-            shuffledQuestions.forEach((question, index) => {
-                question.setAttribute('id', 'q' + (index + 1));
-                document.getElementById('quizForm').appendChild(question);
-            });
-        }
-
-        // Show the next question
         function nextQuestion() {
             if (currentQuestionIndex < questions.length - 1) {
-                // Hide the current question
                 questions[currentQuestionIndex].classList.remove("active");
                 currentQuestionIndex++;
-
-                // Show the next question
                 questions[currentQuestionIndex].classList.add("active");
+                updateProgressBar();
             } else {
-                // If it's the last question, calculate score
                 calculateScore();
             }
         }
 
-        // Select answer for a question
         function selectAnswer(questionId, isCorrect) {
             answers[questionId] = isCorrect;
             nextQuestion();
         }
 
-        // Calculate score and show result
         function calculateScore() {
             let score = 0;
-            Object.values(answers).forEach(answer => {
-                if (answer === true) {
-                    score++;
-                }
-            });
-            document.getElementById("result").textContent = `Your score: ${score}/${questions.length}`;
+            Object.values(answers).forEach(answer => { if (answer) score++; });
+            
+            document.body.style.background = score > 2 
+                ? "linear-gradient(120deg, #4CAF50, #8BC34A)" 
+                : "linear-gradient(120deg, #FF5722, #FF3D00)";
+            
+            document.getElementById("result").textContent = `🎉 Το σκορ σου: ${score}/${questions.length}!`;
             document.getElementById("result").classList.remove("hidden");
         }
 
-        // Initialize the quiz
-        shuffleQuestions();
-        questions[currentQuestionIndex].classList.add("active");  // Start from the first question
+        function updateProgressBar() {
+            const percentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBar.style.width = percentage + "%";
+        }
+
+        questions[currentQuestionIndex].classList.add("active");
     </script>
 </body>
 </html>
