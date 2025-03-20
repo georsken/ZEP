@@ -251,3 +251,14 @@
     </script>
 </body>
 </html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Πήγαινε στο quiz</h1>
+    <button onclick="location.href='quiz.html'">Δοκίμασε το Quiz</button>
+</body>
